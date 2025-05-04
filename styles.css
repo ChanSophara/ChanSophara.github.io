@@ -1391,3 +1391,50 @@ footer {
         margin-top: 15px;
     }
 }
+
+/* ==================== */
+/* Hero Photo Mobile Fix */
+/* ==================== */
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-photo {
+    width: 100%;
+    max-width: 350px; /* Adjust this value as needed */
+    height: auto;
+    border-radius: 15px;
+    border: 8px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .hero .container {
+        flex-direction: column;
+    }
+    
+    .hero-content, .hero-image {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-photo {
+        max-width: 250px; /* Smaller for mobile */
+        margin: 20px auto;
+        display: block !important;
+    }
+    
+    .hero-btns {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-photo {
+        max-width: 200px; /* Even smaller for very small devices */
+    }
+}
