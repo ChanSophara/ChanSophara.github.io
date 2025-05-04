@@ -1143,3 +1143,198 @@ footer {
 }
 
 /* Keep your existing video preview and play button styles */
+
+
+
+
+/* ====================== */
+/* Enhanced Mobile Styles */
+/* ====================== */
+
+@media (max-width: 768px) {
+    /* General adjustments */
+    section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+    
+    /* Hero section improvements */
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 80px;
+        padding-bottom: 50px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn, .btn-outline {
+        width: 100%;
+        text-align: center;
+        margin-left: 0 !important;
+    }
+    
+    /* About section improvements */
+    .about-content {
+        gap: 30px;
+    }
+    
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-tags span {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    /* Timeline improvements */
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-date {
+        left: 0;
+        transform: none;
+        top: 10px;
+    }
+    
+    .timeline-content {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    /* Project cards improvements */
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .project-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .project-info p {
+        font-size: 0.95rem;
+    }
+    
+    /* Activities grid */
+    .activity-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .activity-card {
+        padding: 20px;
+    }
+    
+    /* Contact section */
+    .contact-details div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .contact-details i {
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
+    
+    /* Footer adjustments */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Video modal */
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* YouTube container */
+    .youtube-container {
+        height: 180px;
+    }
+    
+    .play-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .play-button i {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small devices */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-tags {
+        gap: 8px;
+    }
+    
+    .project-tags span {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+    }
+    
+    /* Navigation */
+    nav ul {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
+    /* Timeline date */
+    .timeline-date {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
