@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Force hero photo visibility on mobile
+    function checkHeroPhoto() {
+        const heroPhoto = document.querySelector('.hero-photo');
+        if (window.innerWidth <= 768) {
+            heroPhoto.style.display = 'block';
+        }
+    }
+
+    // Run on load and resize
+    window.addEventListener('load', checkHeroPhoto);
+    window.addEventListener('resize', checkHeroPhoto);
     // Mobile device detection
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || 
