@@ -1392,49 +1392,64 @@ footer {
     }
 }
 
-/* ==================== */
-/* Hero Photo Mobile Fix */
-/* ==================== */
+/* ====================== */
+/* Hero Section - Final Fix */
+/* ====================== */
+
+/* Base styles for all devices */
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
 
 .hero-image {
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .hero-photo {
     width: 100%;
-    max-width: 350px; /* Adjust this value as needed */
+    max-width: 350px; /* Perfect for desktop */
     height: auto;
     border-radius: 15px;
     border: 8px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
 }
 
+/* Mobile styles (will override desktop styles below 768px) */
 @media (max-width: 768px) {
     .hero .container {
         flex-direction: column;
-    }
-    
-    .hero-content, .hero-image {
-        width: 100%;
         text-align: center;
+        gap: 30px;
     }
-    
+
+    .hero-image {
+        order: -1; /* Moves photo above text */
+        margin-bottom: 20px;
+    }
+
     .hero-photo {
-        max-width: 250px; /* Smaller for mobile */
-        margin: 20px auto;
-        display: block !important;
+        max-width: 250px; /* Perfect size for mobile */
     }
-    
+
     .hero-btns {
         justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
+/* Small mobile devices */
 @media (max-width: 480px) {
     .hero-photo {
-        max-width: 200px; /* Even smaller for very small devices */
+        max-width: 200px; /* Slightly smaller for very small screens */
     }
 }
