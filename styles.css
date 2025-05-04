@@ -1450,7 +1450,7 @@ footer {
 /* Small mobile devices */
 @media (max-width: 480px) {
     .hero-photo {
-        max-width: 200px; /* Slightly smaller for very small screens */
+        max-width: 250px; /* Slightly smaller for very small screens */
     }
 }
 
