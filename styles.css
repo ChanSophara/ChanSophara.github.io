@@ -1453,3 +1453,69 @@ footer {
         max-width: 200px; /* Slightly smaller for very small screens */
     }
 }
+
+
+
+
+/* ====================== */
+/* Landscape Mobile View */
+/* ====================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero .container {
+        flex-direction: row !important; /* Side-by-side like desktop */
+        gap: 20px; /* Smaller gap for mobile landscape */
+    }
+    
+    .hero-image {
+        order: 0 !important; /* Reset order */
+    }
+    
+    .hero-photo {
+        max-width: 180px !important; /* Slightly smaller than desktop */
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem !important;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-btns {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+    }
+    
+    .btn, .btn-outline {
+        padding: 10px 15px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* For tablets in landscape */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .hero-photo {
+        max-width: 250px !important;
+    }
+}
+/* For ultra-wide mobile screens */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero .container {
+        gap: 10px !important;
+    }
+    
+    .hero-photo {
+        max-width: 150px !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 5px !important;
+    }
+}
