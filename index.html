@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
-<body>
+<body data-theme="light">
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
     <header>
         <div class="container">
             <div class="logo" data-aos="fade-down">
-                <!-- You can add your logo here -->
                 <span>C.SOPHARA</span>
             </div>
             <nav data-aos="fade-down">
@@ -45,8 +53,12 @@
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left">
-                <!-- You can add your photo here -->
-                <img src="images/phara.jpg" alt="Chan Sophara" class="hero-photo">
+                <div class="profile-circle">
+                    <img src="images/phara.jpg" alt="Chan Sophara" class="hero-photo">
+                    <div class="circle-animation"></div>
+                    <div class="circle-animation delay-1"></div>
+                    <div class="circle-animation delay-2"></div>
+                </div>
             </div>
         </div>
         <div class="scroll-down">
@@ -62,7 +74,7 @@
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right">
                     <p>I'm a fourth-year Data Science student at ITC passionate about Data Analysis and Visualization. Skilled in Python, SQL, Machine Learning, and Power BI.</p>
-                    <p>I'm seeking opportunities to apply my skills and eager to learn more in the field of data science .</p>
+                    <p>I'm seeking opportunities to apply my skills and eager to learn more in the field of data science.</p>
                     <div class="personal-info">
                         <div>
                             <span>Name:</span>
@@ -82,8 +94,12 @@
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/ChanSophara" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/ChanSophara" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:Sopharachan90@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="documents/CHAN_SOPHARA_CV.pdf" download class="download-cv" title="Download CV">
+                            <i class="fas fa-download"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="skills" data-aos="fade-left">
@@ -137,7 +153,7 @@
                     <div class="timeline-date">2024</div>
                     <div class="timeline-content">
                         <h3>Junior Data Analyst (Internship)</h3>
-                        | 24 Jul 2024 – 31 Dec 2024 |
+                        | 24 Jul 2024 – 30 Dec 2024 |
                         <h4>Digital Government Committee (DGC)</h4>
                         <ul>
                             <li>Data cleaning and processing</li>
@@ -146,12 +162,9 @@
                             <li>Research and development on D3.js for website dashboard</li>
                             <li>Enhancing mobile view visualizations</li>
                         </ul>
-
-                        <!-- Add this button -->
                         <a href="documents/transcript.pdf" class="btn-transcript" target="_blank">
                             <i class="fas fa-file-pdf"></i> View Transcript
                         </a>
-
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-up">
@@ -161,12 +174,9 @@
                         | 2022 – Present |
                         <h4>Institute of Technology of Cambodia</h4>
                         <p>Major in Applied Mathematics and Statistics</p>
-                        
-                        <!-- Add this button -->
                         <a href="documents/transcript.pdf" class="btn-transcript" target="_blank">
                             <i class="fas fa-file-pdf"></i> View Transcript
                         </a>
-
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-up">
@@ -174,8 +184,6 @@
                     <div class="timeline-content">
                         <h3>High School Diploma</h3>
                         <h4>Sovannaphumi School</h4>
-
-                        <!-- Add this button -->
                         <a href="documents/transcript.pdf" class="btn-transcript" target="_blank">
                             <i class="fas fa-file-pdf"></i> View Transcript
                         </a>
@@ -188,15 +196,22 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                <button class="filter-btn" data-filter="web-development">Web Development</button>
+                <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+            </div>
             <div class="project-grid">
                 <!-- Chatbot Project -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card" data-category="web-development" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="49AKsgazMco">
                             <img src="videos/Chatbot-preview.jpg" class="video-preview" alt="Rule Based Chatbot (RPC) Preview">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="demo-badge">Demo</div>
                         </div>
                         <div class="project-links">
                             <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
@@ -211,17 +226,26 @@
                             <span>Flask</span>
                             <span>JavaScript</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-detail" data-project="chatbot">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Food Delivery System -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card" data-category="web-development" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="YQWZEPtXr1E">
                             <img src="videos/Food-preview.jpg" class="video-preview" alt="Food Delivery System Preview">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="demo-badge">Demo</div>
                         </div>
                         <div class="project-links">
                             <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
@@ -236,17 +260,26 @@
                             <span>Flask</span>
                             <span>MySQL</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-detail" data-project="food-delivery">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Gym Management System -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-card" data-category="web-development" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="rDWQy3rt73Q">
                             <img src="videos/Gym-preview.jpg" class="video-preview" alt="Gym Management System Preview">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="demo-badge">Demo</div>
                         </div>
                         <div class="project-links">
                             <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
@@ -261,17 +294,26 @@
                             <span>Admin Dashboard</span>
                             <span>Database</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/ChanSophara/Gym-management-system" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-detail" data-project="gym-management">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Driver Drowsiness Detection -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="9-jg1-sjzyk">
                             <img src="videos/Drowsy-preview.jpg" class="video-preview" alt="Driver DrowsinessPreview">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="demo-badge">Demo</div>
                         </div>
                         <div class="project-links">
                             <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
@@ -286,17 +328,26 @@
                             <span>Python</span>
                             <span>Arduino</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/ChanSophara/Driver_Drowsy_Detection" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-detail" data-project="drowsiness-detection">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Traffic Light & Sign Detection -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="ms8VlDGCaMs">
                             <img src="videos/Traffic-preview.jpg" class="video-preview" alt="Traffic Detection Preview">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="demo-badge">Demo</div>
                         </div>
                         <div class="project-links">
                             <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
@@ -310,6 +361,48 @@
                             <span>Computer Vision</span>
                             <span>Python</span>
                             <span>OpenCV</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/ChanSophara/Traffic_light_Object_Yolov8" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-detail" data-project="traffic-detection">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loan Prediction -->
+                <div class="project-card" data-category="data-analysis" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-media">
+                        <div class="youtube-container" data-video-id="dmx-a92-FNc">
+                            <img src="videos/loan.jpg" class="video-preview" alt="Loan Prediction Preview">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="demo-badge">Demo</div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Loan Prediction</h3>
+                        <span class="project-date">Mar 2025</span>
+                        <p>Applied machine learning to build a loan prediction model deployed as a web application with data analysis and visualization.</p>
+                        <div class="project-tags">
+                            <span>Machine Learning</span>
+                            <span>Python</span>
+                            <span>Flask</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/ChanSophara/loan-prediction" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-detail" data-project="loan-prediction">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -354,7 +447,7 @@
             <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-info" data-aos="fade-right">
-                    <h3>Let's talk </h3>
+                    <h3>Let's talk</h3>
                     <p>Feel free to reach out !!!</p>
                     <div class="contact-details">
                         <div>
@@ -373,9 +466,15 @@
                     <div class="social-links">
                         <a href="https://github.com/ChanSophara" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:Sopharachan90@gmail.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                
+                <div class="school-map" data-aos="fade-left">
+                    <h3>Find My School On Map</h3>
+                    <div class="contact-map">
+                        <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d913.7572395098525!2d104.89893722936601!3d11.570531667615736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095135c2ad598d%3A0xb2d48d6f11032091!2sDepartment%20of%20Applied%20Mathematics%20and%20Statistics%20(AMS)!5e1!3m2!1sen!2skh!4v1742013965831!5m2!1sen!2skh" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -385,7 +484,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <span>C.SOPHARA</span>
-                    <p>Data Scientist Student</p>
+                    <p>Data Scientist Student passionate about transforming data into meaningful insights.</p>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
@@ -412,6 +511,7 @@
         </div>
     </footer>
 
+    <!-- Video Modal -->
     <div class="video-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -419,7 +519,248 @@
         </div>
     </div>
 
+    <!-- Project Detail Modals -->
+    <!-- Chatbot Modal -->
+    <div class="project-modal" id="chatbot-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Rule-Based Chatbot (RPC)</h2>
+            </div>
+            <div class="modal-body">
+                <p>A chatbot assistant integrated into a food delivery system to handle customer inquiries and orders with an interactive and modern design.</p>
+                
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Added chatbot assistant feature to existing food delivery system</li>
+                    <li>Created separate server using Flask specifically for the chatbot functionality</li>
+                    <li>Implemented handling for orders, menu checking, location services, special offers, social media links, and team information</li>
+                    <li>Designed conversational flows for natural user interaction</li>
+                    <li>Integrated with the main food delivery system's database</li>
+                </ul>
+                
+                <h3>Technologies Used</h3>
+                <div class="skill-tags">
+                    <span>Flask</span>
+                    <span>Python</span>
+                    <span>Natural Language Processing (NLP)</span>
+                    <span>JavaScript</span>
+                    <span>HTML/CSS</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button class="btn btn-outline close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food Delivery Modal -->
+    <div class="project-modal" id="food-delivery-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Food Delivery System</h2>
+            </div>
+            <div class="modal-body">
+                <p>A complete food delivery platform for Khmer restaurants with customer interface, admin dashboard, and order management system.</p>
+                
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Designed user-friendly and interactive Front End using HTML, CSS, and JavaScript</li>
+                    <li>Developed Back End using Flask server with SQLite and MySQL databases</li>
+                    <li>Created separate Admin page and dashboard for real-time customer data monitoring</li>
+                    <li>Implemented features for handling customer orders and printing order transcripts</li>
+                    <li>Optimized for both desktop and mobile viewing</li>
+                </ul>
+                
+                <h3>Technologies Used</h3>
+                <div class="skill-tags">
+                    <span>Flask</span>
+                    <span>Python</span>
+                    <span>MySQL</span>
+                    <span>SQLite</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Bootstrap</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button class="btn btn-outline close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gym Management Modal -->
+    <div class="project-modal" id="gym-management-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Gym Management System</h2>
+            </div>
+            <div class="modal-body">
+                <p>A full-stack web application for managing gym memberships, staff, and facility bookings with real-time data processing.</p>
+                
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Developed responsive frontend using HTML, CSS, and JavaScript</li>
+                    <li>Built RESTful API backend with Node.js and Express</li>
+                    <li>Implemented CRUD operations for member and staff management</li>
+                    <li>Designed relational database schema and deployed with XAMPP (PHPMyAdmin)</li>
+                    <li>Created user authentication and session management</li>
+                    <li>Integrated real-time data updates without page refresh</li>
+                </ul>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Member registration and profile management</li>
+                    <li>Class scheduling and booking system</li>
+                    <li>Attendance tracking and reporting</li>
+                    <li>Payment processing integration</li>
+                    <li>Responsive design for all device sizes</li>
+                </ul>
+
+                <h3>Technologies Used</h3>
+                <div class="skill-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Node.js</span>
+                    <span>Express</span>
+                    <span>MySQL</span>
+                    <span>XAMPP</span>
+                    <span>REST API</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/ChanSophara/Gym-management-system" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button class="btn btn-outline close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Driver Drowsiness Modal -->
+    <div class="project-modal" id="drowsiness-detection-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Driver Drowsiness Detection</h2>
+            </div>
+            <div class="modal-body">
+                <p>This project aims to reduce accidents caused by drowsy driving by detecting signs of drowsiness in real-time and alerting the driver.</p>
+                
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Built a machine learning model to detect drowsiness using facial landmarks and eye aspect ratio</li>
+                    <li>Implemented two models: ZFNet (89.59% accuracy) as primary and CNN (93.96% accuracy) as fallback</li>
+                    <li>Connected with Arduino to provide physical alerts (vibration and sound) when drowsiness is detected</li>
+                    <li>Optimized for real-time performance with OpenCV for video processing</li>
+                </ul>
+                
+                <h3>Technologies Used</h3>
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>Keras</span>
+                    <span>OpenCV</span>
+                    <span>Arduino</span>
+                    <span>Computer Vision</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/ChanSophara/Driver_Drowsy_Detection" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button class="btn btn-outline close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Traffic Detection Modal -->
+    <div class="project-modal" id="traffic-detection-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Traffic Light and Sign Detection</h2>
+            </div>
+            <div class="modal-body">
+                <p>A comprehensive system to detect and classify traffic lights and signs in real-time, suitable for autonomous vehicles and driver assistance systems.</p>
+                
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Built a model to detect traffic lights and signs using YOLOv8 with 99% image accuracy and 80% video accuracy</li>
+                    <li>Implemented classification using CNN with 97.84% image accuracy</li>
+                    <li>Optimized for real-time performance with frame processing at 30 FPS</li>
+                    <li>Trained on custom dataset of Cambodian traffic signs and lights</li>
+                </ul>
+                
+                <h3>Technologies Used</h3>
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>YOLOv8</span>
+                    <span>TensorFlow</span>
+                    <span>OpenCV</span>
+                    <span>Computer Vision</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/ChanSophara/Traffic_light_Object_Yolov8" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button class="btn btn-outline close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loan Prediction Modal -->
+    <div class="project-modal" id="loan-prediction-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Loan Prediction</h2>
+            </div>
+            <div class="modal-body">
+                <p>A machine learning application that predicts loan default risk based on customer data, deployed as a web application.</p>
+                
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Collected and preprocessed loan data from Kaggle</li>
+                    <li>Applied various machine learning algorithms to build prediction models</li>
+                    <li>Performed data analysis and visualization to understand feature importance</li>
+                    <li>Deployed the best performing model as a web application</li>
+                    <li>Created interactive visualizations to explain model decisions</li>
+                </ul>
+                
+                <h3>Technologies Used</h3>
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>Scikit-learn</span>
+                    <span>Pandas</span>
+                    <span>Matplotlib</span>
+                    <span>Seaborn</span>
+                    <span>Flask</span>
+                    <span>HTML/CSS</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/ChanSophara/loan-prediction" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button class="btn btn-outline close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

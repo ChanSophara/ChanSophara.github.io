@@ -1,64 +1,58 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Force hero photo visibility on mobile
-    function checkHeroPhoto() {
-        const heroPhoto = document.querySelector('.hero-photo');
-        if (window.innerWidth <= 768) {
-            heroPhoto.style.display = 'block';
-        }
-    }
-
-    // Run on load and resize
-    window.addEventListener('load', checkHeroPhoto);
-    window.addEventListener('resize', checkHeroPhoto);
-    // Mobile device detection
-    function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || 
-               (navigator.userAgent.indexOf('IEMobile') !== -1) ||
-               (window.innerWidth <= 768);
-    }
-
-    // Add mobile class to body if needed
-    if (isMobileDevice()) {
-        document.body.classList.add('mobile-device');
-    }
+    // Theme Toggle Functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+    
+    // Check for saved theme preference or use preferred color scheme
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    body.setAttribute('data-theme', savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
 
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('nav ul');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
     
     hamburger.addEventListener('click', function() {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
-        
-        // Toggle body overflow when menu is open
-        if (navLinks.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
     });
     
-    // Close mobile menu when clicking a link
+    // Close mobile menu when clicking a link or overlay
     document.querySelectorAll('nav ul li a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
     });
     
-    // Sticky Header with mobile optimization
+    mobileMenuOverlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Sticky Header
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
-        // Less scroll required for sticky header on mobile
-        const scrollThreshold = isMobileDevice() ? 50 : 100;
-        header.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+        header.classList.toggle('scrolled', window.scrollY > 50);
     });
     
-    // Smooth Scrolling for Anchor Links with mobile offset adjustment
+    // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            // Don't intercept anchor links that don't point to elements
             if (this.getAttribute('href') === '#') return;
             
             e.preventDefault();
@@ -67,59 +61,46 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Smaller offset for mobile devices
-                const offset = isMobileDevice() ? 60 : 80;
+                const offset = 80;
                 const targetPosition = targetElement.offsetTop - offset;
                 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
             }
         });
     });
     
-    // YouTube Video Handling with mobile optimizations
+    // YouTube Video Handling
     const videoBtns = document.querySelectorAll('.video-btn');
     const videoModal = document.querySelector('.video-modal');
-    const closeModal = document.querySelector('.close-modal');
+    const closeModal = document.querySelectorAll('.close-modal');
     const youtubeIframeContainer = document.querySelector('.youtube-iframe-container');
     
     function openYoutubeVideo(videoId) {
-        // Clear previous iframe
         youtubeIframeContainer.innerHTML = '';
         
-        // Create new iframe with mobile-appropriate settings
         const iframe = document.createElement('iframe');
         iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
         iframe.setAttribute('frameborder', '0');
         iframe.setAttribute('allowfullscreen', '');
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
         
-        // Adjust sizing for mobile
-        if (isMobileDevice()) {
+        if (window.innerWidth <= 768) {
             iframe.style.width = '100%';
-            iframe.style.height = '56.25vw'; // 16:9 aspect ratio
+            iframe.style.height = '56.25vw';
             iframe.style.minHeight = '200px';
             iframe.style.maxHeight = 'calc(100vh - 100px)';
         } else {
             iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.minHeight = '400px';
+            iframe.style.height = '450px';
         }
         
         youtubeIframeContainer.appendChild(iframe);
         videoModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         
-        // Close modal when pressing Escape key
         document.addEventListener('keydown', function escClose(e) {
             if (e.key === 'Escape') {
                 closeVideoModal();
@@ -137,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Click on project card video area
     document.querySelectorAll('.youtube-container').forEach(container => {
         container.addEventListener('click', function(e) {
-            // Don't trigger if clicking on the play button or video button
             if (e.target.closest('.play-button') || e.target.closest('.video-btn')) {
                 return;
             }
@@ -156,7 +136,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    closeModal.addEventListener('click', closeVideoModal);
+    closeModal.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const modal = this.closest('.video-modal, .project-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    });
     
     videoModal.addEventListener('click', function(e) {
         if (e.target === videoModal) {
@@ -164,57 +150,73 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Animation on Scroll with mobile optimizations
+    // Project Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    card.classList.add('fade-in');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('fade-in');
+                }
+            });
+        });
+    });
+    
+    // Project Detail Modals
+    const projectModals = document.querySelectorAll('.project-modal');
+    const detailBtns = document.querySelectorAll('.btn-detail');
+    
+    detailBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project');
+            const modal = document.getElementById(`${projectId}-modal`);
+            
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    projectModals.forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('close-modal-btn')) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+    
+    // Animation on Scroll
     AOS.init({
-        duration: isMobileDevice() ? 600 : 800,
+        duration: 800,
         easing: 'ease-in-out',
         once: true,
-        disable: isMobileDevice() ? 'phone' : false,
-        offset: isMobileDevice() ? 120 : 200
+        offset: 120
     });
     
-    // Project Video Placeholder Interaction with mobile hover fallback
-    document.querySelectorAll('.youtube-container').forEach(container => {
-        const playBtn = container.querySelector('.play-button');
-        
-        if (!isMobileDevice()) {
-            // Hover effects only for non-mobile
-            container.addEventListener('mouseenter', function() {
-                playBtn.style.transform = 'translate(-50%, -50%) scale(1.1)';
-            });
-            
-            container.addEventListener('mouseleave', function() {
-                playBtn.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        }
-        
-        // Touch feedback for mobile
-        container.addEventListener('touchstart', function() {
-            if (isMobileDevice()) {
-                this.style.opacity = '0.9';
-            }
-        });
-        
-        container.addEventListener('touchend', function() {
-            if (isMobileDevice()) {
-                this.style.opacity = '1';
-            }
-        });
+    // Initialize all projects as active
+    projectCards.forEach(card => {
+        card.style.display = 'block';
     });
-    
-    // Prevent background scroll when modal is open
-    document.addEventListener('touchmove', function(e) {
-        if (videoModal.style.display === 'flex') {
-            e.preventDefault();
-        }
-    }, { passive: false });
     
     // Handle iOS viewport height issue
     function handleViewportHeight() {
-        if (isMobileDevice()) {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
     
     // Initial call
@@ -223,14 +225,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update on resize
     window.addEventListener('resize', handleViewportHeight);
     
-    // Handle iOS form zooming prevention
-    if (isMobileDevice()) {
-        document.addEventListener('focusin', function(e) {
-            if (e.target.matches('input, textarea, select')) {
-                window.setTimeout(function() {
-                    document.documentElement.style.zoom = '1';
-                }, 100);
-            }
-        });
+    // Force hero photo visibility on mobile
+    function checkHeroPhoto() {
+        const heroPhoto = document.querySelector('.hero-photo');
+        if (window.innerWidth <= 768) {
+            heroPhoto.style.display = 'block';
+        }
     }
+
+    // Run on load and resize
+    window.addEventListener('load', checkHeroPhoto);
+    window.addEventListener('resize', checkHeroPhoto);
 });
