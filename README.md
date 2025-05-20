@@ -1,4 +1,4 @@
-# 🌐 Chan Sophara - Portfolio Website
+# 🌐 Chan Sophara - Portfolio Website - Version 1
 
 ## 📘 Project Overview
 My personal GitHub portfolio showcasing academic projects, certificates, and CV.
