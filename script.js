@@ -2,10 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Theme Toggle Functionality
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
-    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('nav ul');
-    const navItems = document.querySelectorAll('nav ul li a');
     
     // Check for saved theme preference or use preferred color scheme
     const savedTheme = localStorage.getItem('theme') || 
@@ -20,29 +16,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mobile Navigation
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('nav ul');
+    const navItems = document.querySelectorAll('nav ul li a');
+
     hamburger.addEventListener('click', function() {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
-        mobileMenuOverlay.classList.toggle('active');
         document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
     });
 
-    // Close mobile menu when clicking overlay or a link
-    mobileMenuOverlay.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-
+    // Close mobile menu when clicking a link
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
     });
+
+
 
     // Sticky Header
     window.addEventListener('scroll', function() {
