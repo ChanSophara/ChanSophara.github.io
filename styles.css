@@ -195,21 +195,22 @@ header .container {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--dark-color);
+    z-index: 1002;
+    position: relative;
 }
 
 .logo span {
     color: var(--primary-color);
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav ul {
     display: flex;
     list-style: none;
-}
-
-nav ul.active {
-    transform: translateX(0) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
 nav ul li {
@@ -243,7 +244,7 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
-/* Updated Mobile Navigation Styles */
+/* Mobile Navigation */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -251,7 +252,7 @@ nav ul li a:hover {
     justify-content: space-between;
     width: 30px;
     height: 21px;
-    z-index: 1001;
+    z-index: 1002;
     position: relative;
 }
 
@@ -262,20 +263,18 @@ nav ul li a:hover {
     background-color: var(--dark-color);
     transition: all 0.3s ease;
     border-radius: 3px;
-    transform-origin: left center;
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(1px, -1px);
+    transform: translateY(9px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
-    width: 0;
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(1px, 1px);
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Dark Theme Header Fix */
@@ -297,7 +296,6 @@ nav ul li a:hover {
     background-color: #f8fafc;
 }
 
-
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
     position: fixed;
@@ -306,7 +304,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    z-index: 998;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -315,6 +313,53 @@ nav ul li a:hover {
 .mobile-menu-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    nav ul {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--card-bg);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px 30px 30px;
+        transition: all 0.5s ease;
+        z-index: 999;
+    }
+    
+    nav ul.active {
+        left: 0;
+    }
+    
+    nav ul li {
+        margin: 0 0 25px 0;
+        width: 100%;
+    }
+    
+    nav ul li a {
+        font-size: 1.2rem;
+        color: var(--text-color);
+        padding: 10px 0;
+        display: block;
+    }
+    
+    /* Dark theme mobile menu fix */
+    [data-theme="dark"] nav ul {
+        background-color: var(--card-bg);
+    }
+    
+    [data-theme="dark"] nav ul li a {
+        color: var(--text-color);
+    }
 }
 
 /* Updated Hero Section */
@@ -1320,61 +1365,6 @@ footer {
     .hero-btns {
         justify-content: center;
     }
-    
-    .hamburger {
-        display: flex;
-    }
-    
-    /* Mobile menu styles */
-    nav ul {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--card-bg);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 0;
-        gap: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        transform: translateX(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        z-index: 1000;
-    }
-    
-    
-    
-    nav ul li {
-        margin: 0;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-    }
-
-    nav ul.active li {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: calc(0.1s * var(--i));
-    }
-    
-    nav ul li a {
-        color: var(--text-color);
-        font-size: 1.5rem;
-        font-weight: 600;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-    }
-
-    nav ul li a:hover {
-        color: var(--primary-color);
-        background-color: rgba(37, 99, 235, 0.1);
-    }
-
 
     .project-grid {
         grid-template-columns: 1fr;
@@ -1388,50 +1378,9 @@ footer {
         width: 100%;
         justify-content: center;
     }
-
-    /* Mobile menu overlay */
-    .mobile-menu-overlay {
-        display: none; /* Remove the overlay since we're using a different approach */
-    }
-    
-    /* Header adjustments for mobile */
-    header {
-        padding: 15px 0;
-    }
-    
-    header .container {
-        padding: 0 15px;
-    }
-    
-    /* Ensure logo stays visible */
-    .logo {
-        z-index: 1001;
-        position: relative;
-    }
-    /* Body lock when menu is open */
-    body.menu-open {
-        overflow: hidden;
-    }
-    
-    /* Add backdrop filter for modern browsers */
-    @supports (backdrop-filter: blur(10px)) {
-        nav ul {
-            background-color: rgba(30, 41, 59, 0.9);
-            backdrop-filter: blur(10px);
-        }
-        
-        [data-theme="light"] nav ul {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-    }
-
 }
 
 @media (max-width: 576px) {
-    nav ul li a {
-        font-size: 1.3rem;
-    }
-    
     .section-title {
         font-size: 2rem;
     }

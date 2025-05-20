@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Theme Toggle Functionality
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('nav ul');
+    const navItems = document.querySelectorAll('nav ul li a');
     
     // Check for saved theme preference or use preferred color scheme
     const savedTheme = localStorage.getItem('theme') || 
@@ -16,48 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mobile Navigation
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('nav ul');
-    const navItems = document.querySelectorAll('nav ul li');
-
-    // Add index to each nav item for staggered animation
-    navItems.forEach((item, index) => {
-        item.style.setProperty('--i', index);
-    });
-
     hamburger.addEventListener('click', function() {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-        
-        // Close all open modals when menu is opened
-        if (this.classList.contains('active')) {
-            document.querySelectorAll('.video-modal, .project-modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
     });
 
-    // Close mobile menu when clicking a link
+    // Close mobile menu when clicking overlay or a link
+    mobileMenuOverlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
     });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('nav') && !e.target.closest('.hamburger') && 
-            navLinks.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-    });
-
-
 
     // Sticky Header
     window.addEventListener('scroll', function() {
