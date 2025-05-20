@@ -237,6 +237,7 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
+/* Mobile Navigation */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -244,17 +245,16 @@ nav ul li a:hover {
     justify-content: space-between;
     width: 30px;
     height: 21px;
-    position: relative;
-    z-index: 1002;
+    z-index: 1001;
 }
 
 .hamburger span {
     display: block;
-    height: 3px;
     width: 100%;
+    height: 3px;
     background-color: var(--dark-color);
-    border-radius: 3px;
     transition: all 0.3s ease;
+    border-radius: 3px;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -283,9 +283,11 @@ nav ul li a:hover {
     color: #f8fafc;
 }
 
+/* Dark theme header fix */
 [data-theme="dark"] .hamburger span {
     background-color: #f8fafc;
 }
+
 
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
@@ -1312,45 +1314,39 @@ footer {
     
     .hamburger {
         display: flex;
-        z-index: 1003; /* Higher than mobile menu overlay */
-        position: relative;
     }
     
     /* Mobile menu styles */
     nav ul {
         position: fixed;
-        top: 0;
-        left: -100%;
-        width: 70%;
-        max-width: 300px;
-        height: 100vh;
+        top: 80px;
+        left: 0;
+        width: 100%;
         background-color: var(--card-bg);
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding-top: 80px;
-        padding-left: 30px;
-        transition: left 0.3s ease;
-        z-index: 1002;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 999;
     }
     
+    /* Active state - shown when hamburger is clicked */
     nav ul.active {
-        left: 0;
+        transform: translateY(0);
     }
     
     nav ul li {
-        margin: 15px 0;
-        width: 100%;
+        margin: 0;
     }
     
     nav ul li a {
         color: var(--text-color);
-        font-size: 1.1rem;
-        padding: 8px 0;
-        display: block;
-        width: 100%;
+        font-size: 1.2rem;
     }
+
 
     .project-grid {
         grid-template-columns: 1fr;
@@ -1367,8 +1363,7 @@ footer {
 
     /* Mobile menu overlay */
     .mobile-menu-overlay {
-        z-index: 1001;
-        background-color: rgba(0, 0, 0, 0.7);
+        display: none; /* Remove the overlay since we're using a different approach */
     }
     
     /* Header adjustments for mobile */

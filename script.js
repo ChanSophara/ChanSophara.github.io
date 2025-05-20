@@ -18,31 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('nav ul');
-    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const navItems = document.querySelectorAll('nav ul li a');
 
     hamburger.addEventListener('click', function() {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
-        mobileMenuOverlay.classList.toggle('active');
         document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
     });
 
-    // Close mobile menu when clicking a link or overlay
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', () => {
+    // Close mobile menu when clicking a link
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
     });
 
-    mobileMenuOverlay.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
+
+
     // Sticky Header
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
