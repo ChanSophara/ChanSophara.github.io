@@ -24,6 +24,12 @@
             <div class="logo" data-aos="fade-down">
                 <span>C.SOPHARA</span>
             </div>
+            <!-- Add this inside your header, after the logo -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav data-aos="fade-down">
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -35,6 +41,23 @@
             </nav>
         </div>
     </header>
+    <!-- Add this right after the header closing tag -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="theme-switcher-mobile">
+                <span>Dark Mode</span>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="mobile-theme-toggle">
+                    <label for="mobile-theme-toggle"></label>
+                </div>
+            </li>
+        </ul>
+    </div>
 
     <section id="home" class="hero">
         <div class="container">

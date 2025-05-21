@@ -43,83 +43,96 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // YouTube Video Handling
-    const videoBtns = document.querySelectorAll('.video-btn');
-    const videoModal = document.querySelector('.video-modal');
-    const closeModal = document.querySelectorAll('.close-modal');
-    const youtubeIframeContainer = document.querySelector('.youtube-iframe-container');
+    // Replace your existing video modal handling code with this:
+
+// Video Modal Handling
+const videoBtns = document.querySelectorAll('.video-btn');
+const videoModal = document.querySelector('.video-modal');
+const closeModalBtns = document.querySelectorAll('.close-modal');
+const youtubeIframeContainer = document.querySelector('.youtube-iframe-container');
+
+let currentVideoId = null;
+
+function openYoutubeVideo(videoId) {
+    currentVideoId = videoId;
+    youtubeIframeContainer.innerHTML = '';
     
-    function openYoutubeVideo(videoId) {
-        youtubeIframeContainer.innerHTML = '';
-        
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-        
-        if (window.innerWidth <= 768) {
-            iframe.style.width = '100%';
-            iframe.style.height = '56.25vw';
-            iframe.style.minHeight = '200px';
-            iframe.style.maxHeight = 'calc(100vh - 100px)';
-        } else {
-            iframe.style.width = '100%';
-            iframe.style.height = '450px';
-        }
-        
-        youtubeIframeContainer.appendChild(iframe);
-        videoModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
-        document.addEventListener('keydown', function escClose(e) {
-            if (e.key === 'Escape') {
-                closeVideoModal();
-                document.removeEventListener('keydown', escClose);
-            }
-        });
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    
+    if (window.innerWidth <= 768) {
+        iframe.style.width = '100%';
+        iframe.style.height = '56.25vw';
+        iframe.style.minHeight = '200px';
+        iframe.style.maxHeight = 'calc(100vh - 100px)';
+    } else {
+        iframe.style.width = '100%';
+        iframe.style.height = '450px';
     }
     
-    function closeVideoModal() {
-        videoModal.style.display = 'none';
-        youtubeIframeContainer.innerHTML = '';
-        document.body.style.overflow = 'auto';
-    }
+    youtubeIframeContainer.appendChild(iframe);
+    videoModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
     
-    // Click on project card video area
-    document.querySelectorAll('.youtube-container').forEach(container => {
-        container.addEventListener('click', function(e) {
-            if (e.target.closest('.play-button') || e.target.closest('.video-btn')) {
-                return;
-            }
-            
-            const videoId = this.getAttribute('data-video-id');
-            openYoutubeVideo(videoId);
-        });
-    });
-    
-    // Click on play video button
-    videoBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const videoId = this.closest('.project-media').querySelector('.youtube-container').getAttribute('data-video-id');
-            openYoutubeVideo(videoId);
-        });
-    });
-    
-    closeModal.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const modal = this.closest('.video-modal, .project-modal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-    });
-    
-    videoModal.addEventListener('click', function(e) {
-        if (e.target === videoModal) {
+    document.addEventListener('keydown', function escClose(e) {
+        if (e.key === 'Escape') {
             closeVideoModal();
+            document.removeEventListener('keydown', escClose);
         }
     });
+}
+
+function closeVideoModal() {
+    // Clear the iframe to stop the video
+    youtubeIframeContainer.innerHTML = '';
+    videoModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    currentVideoId = null;
+}
+
+// Click on project card video area
+document.querySelectorAll('.youtube-container').forEach(container => {
+    container.addEventListener('click', function(e) {
+        if (e.target.closest('.play-button') || e.target.closest('.video-btn')) {
+            return;
+        }
+        
+        const videoId = this.getAttribute('data-video-id');
+        openYoutubeVideo(videoId);
+    });
+});
+
+// Click on play video button
+videoBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const videoId = this.closest('.project-media').querySelector('.youtube-container').getAttribute('data-video-id');
+        openYoutubeVideo(videoId);
+    });
+});
+
+// Close modal events
+closeModalBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        closeVideoModal();
+    });
+});
+
+videoModal.addEventListener('click', function(e) {
+    if (e.target === videoModal) {
+        closeVideoModal();
+    }
+});
+
+// Also add this to handle when mobile menu closes
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('mobile-menu')) {
+        closeVideoModal();
+    }
+});
     
     // Project Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -207,4 +220,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run on load and resize
     window.addEventListener('load', checkHeroPhoto);
     window.addEventListener('resize', checkHeroPhoto);
+    
+    // Add this to your existing script.js
+// Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+});
+
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
+
+// Mobile theme toggle
+mobileThemeToggle.addEventListener('change', function() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+// Sync mobile theme toggle with system
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (mobileThemeToggle) {
+        mobileThemeToggle.checked = savedTheme === 'dark';
+    }
+
+    
+});
+
 });
