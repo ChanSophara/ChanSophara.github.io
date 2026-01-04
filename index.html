@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" href="images/bart_circle_64.png" type="image/x-icon">
 </head>
 <body data-theme="light">
     <!-- Theme Toggle Button -->
@@ -20,37 +22,46 @@
     <div class="mobile-menu-overlay"></div>
 
     <header>
-        <div class="container">
+        <div class="container header-container">
             <div class="logo" data-aos="fade-down">
                 <span>C.SOPHARA</span>
             </div>
-            <!-- Add this inside your header, after the logo -->
+            
+            <!-- Hamburger Menu -->
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <nav data-aos="fade-down">
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop" data-aos="fade-down">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                    <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+                    <li><a href="#activities"><i class="fas fa-star"></i> Activities</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <!-- Add this right after the header closing tag -->
+
+    <!-- Mobile Menu -->
     <div class="mobile-menu">
+        <button class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+            <li><a href="#activities"><i class="fas fa-star"></i> Activities</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             <li class="theme-switcher-mobile">
-                <span>Dark Mode</span>
+                <span><i class="fas fa-palette"></i> Dark Mode</span>
                 <div class="toggle-switch">
                     <input type="checkbox" id="mobile-theme-toggle">
                     <label for="mobile-theme-toggle"></label>
@@ -59,103 +70,197 @@
         </ul>
     </div>
 
-    <section id="home" class="hero">
+    <!-- Hero Section -->
+    <section id="home" class="hero section">
         <div class="container">
-            <div class="hero-content" data-aos="fade-right">
-                <h1>CHAN <span>SOPHARA</span></h1>
-                <h2>Data Scientist Student</h2>
-                <p>Transforming data into meaningful insights and building interactive solutions</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">View Projects</a>
-                    <a href="#contact" class="btn-outline">Contact Me</a>
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">
+                    <span class="first-name">CHAN</span>
+                    <span class="last-name">SOPHARA</span>
+                </h1>
+                
+                <div class="hero-subtitle-container">
+                    <div class="animated-text">Data Scientist Student</div>
                 </div>
-            </div>
-            <div class="hero-image" data-aos="fade-left">
-                <div class="profile-circle">
-                    <img src="images/phara.jpg" alt="Chan Sophara" class="hero-photo">
-                    <div class="circle-animation"></div>
-                    <div class="circle-animation delay-1"></div>
-                    <div class="circle-animation delay-2"></div>
+                
+                <p class="hero-description">
+                    Transforming data into meaningful insights and building interactive solutions
+                </p>
+                
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                </div>
+
+                <div class="profile-container" data-aos="fade-up" data-aos-delay="300">
+                    <div class="profile-circle">
+                        <img src="images/phara.jpg" alt="Chan Sophara" class="hero-photo">
+                        <div class="circle-animation"></div>
+                        <div class="circle-animation delay-1"></div>
+                        <div class="circle-animation delay-2"></div>
+                    </div>
                 </div>
             </div>
         </div>
+        
         <div class="scroll-down">
-            <span></span>
-            <span></span>
-            <span></span>
+            <a href="#about">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll Down</span>
+            </a>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <!-- About Section -->
+    <section id="about" class="about section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right">
-                    <p>I'm a fourth-year Data Science student at ITC passionate about Data Analysis and Visualization. Skilled in Python, SQL, Machine Learning, and Power BI.</p>
-                    <p>I'm seeking opportunities to apply my skills and eager to learn more in the field of data science.</p>
+                    <div class="intro-card">
+                        <p>I'm a fourth-year Data Science student at ITC passionate about Data Analysis and Visualization. Skilled in Python, SQL, Machine Learning, and Power BI.</p>
+                        <p>I'm seeking opportunities to apply my skills and eager to learn more in the field of data science.</p>
+                    </div>
+                    
                     <div class="personal-info">
                         <div>
-                            <span>Name:</span>
+                            <span><i class="fas fa-user"></i> Name</span>
                             <p>Chan Sophara</p>
                         </div>
                         <div>
-                            <span>Email:</span>
+                            <span><i class="fas fa-envelope"></i> Email</span>
                             <p>Sopharachan90@gmail.com</p>
                         </div>
                         <div>
-                            <span>Address:</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Address</span>
                             <p>St. 2004, Kakab, Pou Senchey, Phnom Penh</p>
                         </div>
                         <div>
-                            <span>Phone:</span>
+                            <span><i class="fas fa-phone"></i> Phone</span>
                             <p>097-351-3505</p>
                         </div>
                     </div>
+                    
                     <div class="social-links">
-                        <a href="https://github.com/ChanSophara" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:Sopharachan90@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="documents/CHAN_SOPHARA_CV.pdf" download class="download-cv" title="Download CV">
+                        <a href="https://github.com/ChanSophara" target="_blank" class="social-btn" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank" class="social-btn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCrTEZy6WwgczJzw0BYCfu5Q" target="_blank" class="social-btn" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="mailto:Sopharachan90@gmail.com" class="social-btn" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="documents/CHAN_SOPHARA_CV.pdf" download class="social-btn" title="Download CV">
                             <i class="fas fa-download"></i>
                         </a>
                     </div>
+                    
+                    <div class="action-buttons">
+                        <a href="documents/CHAN_SOPHARA_CV.pdf" download class="btn btn-download">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="documents/transcript.pdf" target="_blank" class="btn btn-transcript">
+                            <i class="fas fa-file-pdf"></i> View Transcript
+                        </a>
+                    </div>
                 </div>
-                <div class="skills" data-aos="fade-left">
-                    <h3>My Skills</h3>
+                
+                <div class="skills-container" data-aos="fade-left">
+                    <!-- Programming -->
                     <div class="skill-category">
-                        <h4>Programming</h4>
+                        <h4><i class="fas fa-code"></i> Programming</h4>
                         <div class="skill-tags">
                             <span>Python</span>
-                            <span>HTML/CSS/JS</span>
-                            <span>Flask</span>
-                            <span>Node.js</span>
+                            <span>R script</span>
+                            <span>SQL</span>
+                            <span>JavaScript</span>
+                            <span>React</span>
+                            <span>Vue.js</span>
                         </div>
                     </div>
+                    
+                    <!-- Data Analysis -->
                     <div class="skill-category">
-                        <h4>Databases</h4>
+                        <h4><i class="fas fa-chart-bar"></i> Data Analysis</h4>
                         <div class="skill-tags">
-                            <span>SQL</span>
-                            <span>NoSQL</span>
+                            <span>EDA</span>
+                            <span>Data Cleaning</span>
+                            <span>Statistical Analysis</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ML & CV -->
+                    <div class="skill-category">
+                        <h4><i class="fas fa-brain"></i> ML & Computer Vision</h4>
+                        <div class="skill-tags">
+                            <span>Scikit-learn</span>
+                            <span>TensorFlow</span>
+                            <span>Keras</span>
+                            <span>OpenCV</span>
+                            <span>YOLO(v5/v8)</span>
+                            <span>Face Detection & Recognition</span>
+                        </div>
+                    </div>
+                    
+                    <!-- BI & Visualization -->
+                    <div class="skill-category">
+                        <h4><i class="fas fa-chart-line"></i> BI & Visualization</h4>
+                        <div class="skill-tags">
+                            <span>Power BI</span>
+                            <span>Tableau</span>
+                            <span>Looker Studio</span>
+                            <span>Metabase</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Databases -->
+                    <div class="skill-category">
+                        <h4><i class="fas fa-database"></i> Databases</h4>
+                        <div class="skill-tags">
                             <span>PostgreSQL</span>
                             <span>MySQL</span>
                             <span>SQLite</span>
+                            <span>NoSQL</span>
                         </div>
                     </div>
+                    
+                    <!-- Backend & Deployment -->
                     <div class="skill-category">
-                        <h4>Data Tools</h4>
+                        <h4><i class="fas fa-server"></i> Backend & Deployment</h4>
                         <div class="skill-tags">
-                            <span>Power BI</span>
-                            <span>Metabase</span>
-                            <span>D3.js</span>
+                            <span>Flask</span>
+                            <span>Node.js</span>
+                            <span>Streamlit</span>
+                            <span>Docker</span>
                         </div>
                     </div>
+                    
+                    <!-- Web Scraping -->
                     <div class="skill-category">
-                        <h4>Techniques</h4>
+                        <h4><i class="fas fa-spider"></i> Web Scraping</h4>
                         <div class="skill-tags">
-                            <span>Data Analysis</span>
-                            <span>Machine Learning</span>
-                            <span>Web Scraping</span>
-                            <span>Data Visualization</span>
+                            <span>BeautifulSoup</span>
+                            <span>Scrapy</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Tools -->
+                    <div class="skill-category">
+                        <h4><i class="fas fa-tools"></i> Other Tools</h4>
+                        <div class="skill-tags">
+                            <span>Advanced Excel</span>
+                            <span>Canva</span>
+                            <span>Adobe Illustrator</span>
+                            <span>Kumu.io</span>
                         </div>
                     </div>
                 </div>
@@ -163,16 +268,33 @@
         </div>
     </section>
 
-    <section id="experience" class="experience">
+    <!-- Experience & Education -->
+    <section id="experience" class="experience section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Experience & Education</h2>
+            
             <div class="timeline">
+                <!-- Khmer Enterprise Experience -->
                 <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h3>Business Networking (Internship)</h3>
+                        <h4>KHMER ENTERPRISE (KE) <span>| 4 Jul 2025 – 3 Oct 2025</span></h4>
+                        <ul>
+                            <li>Report & documentation</li>
+                            <li>Designing visual graph for Entrepreneurial Ecosystem roadmap (EER)</li>
+                            <li>EDA on Entrepreneurial ecosystem in Cambodia (PP, BTB, SR)</li>
+                            <li>Social network analysis on ecosystem (Kumu.io)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- DGC Experience -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="timeline-date">2024</div>
                     <div class="timeline-content">
                         <h3>Junior Data Analyst (Internship)</h3>
-                        | 24 Jul 2024 – 30 Dec 2024 |
-                        <h4>Digital Government Committee (DGC)</h4>
+                        <h4>Digital Government Committee (DGC) <span>| 24 Jul 2024 – 30 Dec 2024</span></h4>
                         <ul>
                             <li>Data cleaning and processing</li>
                             <li>Extracting data through REST API</li>
@@ -180,46 +302,43 @@
                             <li>Research and development on D3.js for website dashboard</li>
                             <li>Enhancing mobile view visualizations</li>
                         </ul>
-                        <a href="documents/transcript.pdf" class="btn-transcript" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Transcript
-                        </a>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-up">
+                
+                <!-- Education -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="timeline-date">2022</div>
                     <div class="timeline-content">
                         <h3>Bachelor Degree of Data Science</h3>
-                        | 2022 – Present |
-                        <h4>Institute of Technology of Cambodia</h4>
+                        <h4>Institute of Technology of Cambodia <span>| 2022 – Present</span></h4>
                         <p>Major in Applied Mathematics and Statistics</p>
-                        <a href="documents/transcript.pdf" class="btn-transcript" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Transcript
-                        </a>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-up">
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                     <div class="timeline-date">2021</div>
                     <div class="timeline-content">
                         <h3>High School Diploma</h3>
                         <h4>Sovannaphumi School</h4>
-                        <a href="documents/transcript.pdf" class="btn-transcript" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Transcript
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
                 <button class="filter-btn" data-filter="web-development">Web Development</button>
                 <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+                <button class="filter-btn" data-filter="computer-vision">Computer Vision</button>
             </div>
+            
             <div class="project-grid">
                 <!-- Chatbot Project -->
                 <div class="project-card" data-category="web-development" data-aos="fade-up" data-aos-delay="100">
@@ -231,13 +350,13 @@
                             </div>
                             <div class="demo-badge">Demo</div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
-                        </div>
+                        
                     </div>
                     <div class="project-info">
-                        <h3>Rule Based Chatbot (RPC)</h3>
-                        <span class="project-date">Apr 2025</span>
+                        <div class="project-header">
+                            <h3>Rule Based Chatbot (RPC)</h3>
+                            <span class="project-date">Apr 2025</span>
+                        </div>
                         <p>Added chatbot assistant feature in food delivery system with interactive and modern design. Created Flask server for chatbot handling orders, menu, location, offers, etc.</p>
                         <div class="project-tags">
                             <span>Python</span>
@@ -245,10 +364,10 @@
                             <span>JavaScript</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn-code">
+                            <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn btn-primary btn-small">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <button class="btn-detail" data-project="chatbot">
+                            <button class="btn btn-outline btn-small btn-detail" data-project="chatbot">
                                 <i class="fas fa-info-circle"></i> Details
                             </button>
                         </div>
@@ -265,13 +384,13 @@
                             </div>
                             <div class="demo-badge">Demo</div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
-                        </div>
+                       
                     </div>
                     <div class="project-info">
-                        <h3>Food Delivery System</h3>
-                        <span class="project-date">Feb - Apr 2025</span>
+                        <div class="project-header">
+                            <h3>Food Delivery System</h3>
+                            <span class="project-date">Feb - Apr 2025</span>
+                        </div>
                         <p>Designed user-friendly front end for Khmer restaurant. Implemented back end with Flask and SQLite/MySQL. Created admin dashboard for real-time data monitoring.</p>
                         <div class="project-tags">
                             <span>HTML/CSS/JS</span>
@@ -279,10 +398,10 @@
                             <span>MySQL</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn-code">
+                            <a href="https://github.com/ChanSophara/Food-delivery-V3_Chatbot" target="_blank" class="btn btn-primary btn-small">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <button class="btn-detail" data-project="food-delivery">
+                            <button class="btn btn-outline btn-small btn-detail" data-project="food-delivery">
                                 <i class="fas fa-info-circle"></i> Details
                             </button>
                         </div>
@@ -299,13 +418,13 @@
                             </div>
                             <div class="demo-badge">Demo</div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
-                        </div>
+                        
                     </div>
                     <div class="project-info">
-                        <h3>Gym Management System</h3>
-                        <span class="project-date">2025</span>
+                        <div class="project-header">
+                            <h3>Gym Management System</h3>
+                            <span class="project-date">2025</span>
+                        </div>
                         <p>Complete gym management solution with admin control system for member tracking, payment processing, and facility management.</p>
                         <div class="project-tags">
                             <span>Full Stack</span>
@@ -313,10 +432,10 @@
                             <span>Database</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/ChanSophara/Gym-management-system" target="_blank" class="btn-code">
+                            <a href="https://github.com/ChanSophara/Gym-management-system" target="_blank" class="btn btn-primary btn-small">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <button class="btn-detail" data-project="gym-management">
+                            <button class="btn btn-outline btn-small btn-detail" data-project="gym-management">
                                 <i class="fas fa-info-circle"></i> Details
                             </button>
                         </div>
@@ -324,22 +443,22 @@
                 </div>
 
                 <!-- Driver Drowsiness Detection -->
-                <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card" data-category="machine-learning computer-vision" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="9-jg1-sjzyk">
-                            <img src="videos/Drowsy-preview.jpg" class="video-preview" alt="Driver DrowsinessPreview">
+                            <img src="videos/Drowsy-preview.jpg" class="video-preview" alt="Driver Drowsiness Preview">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
                             <div class="demo-badge">Demo</div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
-                        </div>
+                        
                     </div>
                     <div class="project-info">
-                        <h3>Driver Drowsiness Detection</h3>
-                        <span class="project-date">Nov 2024 - Feb 2024</span>
+                        <div class="project-header">
+                            <h3>Driver Drowsiness Detection</h3>
+                            <span class="project-date">Feb 2025</span>
+                        </div>
                         <p>Machine learning model to detect drowsiness and alert drivers. Integrated with Arduino for real-time alerts.</p>
                         <div class="project-tags">
                             <span>Machine Learning</span>
@@ -347,10 +466,10 @@
                             <span>Arduino</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/ChanSophara/Driver_Drowsy_Detection" target="_blank" class="btn-code">
+                            <a href="https://github.com/ChanSophara/Driver_Drowsy_Detection" target="_blank" class="btn btn-primary btn-small">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <button class="btn-detail" data-project="drowsiness-detection">
+                            <button class="btn btn-outline btn-small btn-detail" data-project="drowsiness-detection">
                                 <i class="fas fa-info-circle"></i> Details
                             </button>
                         </div>
@@ -358,7 +477,7 @@
                 </div>
 
                 <!-- Traffic Light & Sign Detection -->
-                <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="ms8VlDGCaMs">
                             <img src="videos/Traffic-preview.jpg" class="video-preview" alt="Traffic Detection Preview">
@@ -367,13 +486,13 @@
                             </div>
                             <div class="demo-badge">Demo</div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
-                        </div>
+                       
                     </div>
                     <div class="project-info">
-                        <h3>Traffic Light & Sign Detection</h3>
-                        <span class="project-date">Oct - Dec 2024</span>
+                        <div class="project-header">
+                            <h3>Traffic Light & Sign Detection</h3>
+                            <span class="project-date">Oct - Dec 2024</span>
+                        </div>
                         <p>Model to detect and classify traffic lights and signs using computer vision techniques.</p>
                         <div class="project-tags">
                             <span>Computer Vision</span>
@@ -381,10 +500,10 @@
                             <span>OpenCV</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/ChanSophara/Traffic_light_Object_Yolov8" target="_blank" class="btn-code">
+                            <a href="https://github.com/ChanSophara/Traffic_light_Object_Yolov8" target="_blank" class="btn btn-primary btn-small">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <button class="btn-detail" data-project="traffic-detection">
+                            <button class="btn btn-outline btn-small btn-detail" data-project="traffic-detection">
                                 <i class="fas fa-info-circle"></i> Details
                             </button>
                         </div>
@@ -392,7 +511,7 @@
                 </div>
 
                 <!-- Loan Prediction -->
-                <div class="project-card" data-category="data-analysis" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-card" data-category="data-analysis machine-learning" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-media">
                         <div class="youtube-container" data-video-id="dmx-a92-FNc">
                             <img src="videos/loan.jpg" class="video-preview" alt="Loan Prediction Preview">
@@ -401,13 +520,13 @@
                             </div>
                             <div class="demo-badge">Demo</div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="video-btn"><i class="fas fa-play"></i> Play Video</a>
-                        </div>
+                        
                     </div>
                     <div class="project-info">
-                        <h3>Loan Prediction</h3>
-                        <span class="project-date">Mar 2025</span>
+                        <div class="project-header">
+                            <h3>Loan Prediction</h3>
+                            <span class="project-date">Mar 2025</span>
+                        </div>
                         <p>Applied machine learning to build a loan prediction model deployed as a web application with data analysis and visualization.</p>
                         <div class="project-tags">
                             <span>Machine Learning</span>
@@ -415,10 +534,10 @@
                             <span>Flask</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/ChanSophara/loan-prediction" target="_blank" class="btn-code">
+                            <a href="https://github.com/ChanSophara/loan-prediction" target="_blank" class="btn btn-primary btn-small">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <button class="btn-detail" data-project="loan-prediction">
+                            <button class="btn btn-outline btn-small btn-detail" data-project="loan-prediction">
                                 <i class="fas fa-info-circle"></i> Details
                             </button>
                         </div>
@@ -428,103 +547,210 @@
         </div>
     </section>
 
-    <section id="activities" class="activities">
+    <!-- Extracurricular Activities -->
+    <section id="activities" class="activities section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Extracurricular Activities</h2>
-            <div class="activity-grid">
+            
+            <div class="activities-grid">
                 <div class="activity-card" data-aos="fade-up">
-                    <i class="fas fa-users"></i>
-                    <h3>Career Fair (ITC)</h3>
+                    <div class="activity-number">01</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Career Fair at ITC</h3>
+                    <p class="activity-description">Engaged with industry professionals and explored career opportunities</p>
                 </div>
+                
                 <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Workshop on FinTech</h3>
+                    <div class="activity-number">02</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Workshop about Fintech</h3>
+                    <p class="activity-description">Operated by Youth and Financial Technology</p>
                 </div>
+                
                 <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Techno Innovation Challenge</h3>
+                    <div class="activity-number">03</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Introduction to Machine Learning</h3>
+                    <p class="activity-description">Operated by ITC</p>
                 </div>
+                
+                <div class="activity-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="activity-number">04</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Introduction to Natural Language Processing</h3>
+                    <p class="activity-description">Operated by ITC</p>
+                </div>
+                
                 <div class="activity-card" data-aos="fade-up">
-                    <i class="fas fa-robot"></i>
-                    <h3>Intro to Machine Learning</h3>
+                    <div class="activity-number">05</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Data Science Seminar</h3>
+                    <p class="activity-description">By professor from KIT, Japan</p>
                 </div>
+                
                 <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-language"></i>
-                    <h3>Intro to NLP</h3>
+                    <div class="activity-number">06</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Data Science Workshop</h3>
+                    <p class="activity-description">Operated by Dichi Academy</p>
                 </div>
+                
                 <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-globe-asia"></i>
+                    <div class="activity-number">07</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Digital Transformation in Engineering</h3>
+                    <p class="activity-description">Training by Board of Engineers, Cambodia</p>
+                </div>
+                
+                <div class="activity-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="activity-number">08</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>The Power of Data Science and Cybersecurity</h3>
+                    <p class="activity-description">Workshop at ITC by representative from USAID</p>
+                </div>
+                
+                <div class="activity-card" data-aos="fade-up">
+                    <div class="activity-number">09</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
                     <h3>ASEAN Data Science Explorer</h3>
+                    <p class="activity-description">Organized by SAP | Topic: Good Health & Well-being (SDG3)</p>
+                </div>
+                
+                <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="activity-number">10</div>
+                    <div class="activity-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>ASEAN Data Science Finals</h3>
+                    <p class="activity-description">Top 10 National Finals (Cambodia) | Topic: Rice Production & Food Security | SDG2: Zero Hunger</p>
+                    <a href="https://chansophara.github.io/asean-zero-hunger/" target="_blank" class="btn btn-primary btn-small" style="margin-top: 1rem;">
+                        <i class="fas fa-external-link-alt"></i> View Project
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            
             <div class="contact-content">
                 <div class="contact-info" data-aos="fade-right">
                     <h3>Let's talk</h3>
                     <p>Feel free to reach out !!!</p>
+                    
                     <div class="contact-details">
-                        <div>
+                        <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>Sopharachan90@gmail.com</span>
+                            <div>
+                                <h4>Email</h4>
+                                <p>Sopharachan90@gmail.com</p>
+                            </div>
                         </div>
-                        <div>
+                        
+                        <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>097-351-3505</span>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>097-351-3505</p>
+                            </div>
                         </div>
-                        <div>
+                        
+                        <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Phnom Penh, Cambodia</span>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Phnom Penh, Cambodia</p>
+                            </div>
                         </div>
                     </div>
+                    
                     <div class="social-links">
-                        <a href="https://github.com/ChanSophara" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:Sopharachan90@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/ChanSophara" target="_blank" class="social-btn" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/chan-sophara-99a7692b7/" target="_blank" class="social-btn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCrTEZy6WwgczJzw0BYCfu5Q" target="_blank" class="social-btn" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="mailto:Sopharachan90@gmail.com" class="social-btn" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="documents/CHAN_SOPHARA_CV.pdf" download class="social-btn" title="Download CV">
+                            <i class="fas fa-download"></i>
+                        </a>
                     </div>
                 </div>
+                
                 <div class="school-map" data-aos="fade-left">
                     <h3>Find My School On Map</h3>
                     <div class="contact-map">
-                        <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d913.7572395098525!2d104.89893722936601!3d11.570531667615736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095135c2ad598d%3A0xb2d48d6f11032091!2sDepartment%20of%20Applied%20Mathematics%20and%20Statistics%20(AMS)!5e1!3m2!1sen!2skh!4v1742013965831!5m2!1sen!2skh" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d913.7572395098525!2d104.89893722936601!3d11.570531667615736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095135c2ad598d%3A0xb2d48d6f11032091!2sDepartment%20of%20Applied%20Mathematics%20and%20Statistics%20(AMS)!5e1!3m2!1sen!2skh!4v1742013965831!5m2!1sen!2skh" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <span>C.SOPHARA</span>
+                <div class="footer-section">
+                    <h3>C.SOPHARA</h3>
                     <p>Data Scientist Student passionate about transforming data into meaningful insights.</p>
                 </div>
-                <div class="footer-links">
+                
+                <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#experience"><i class="fas fa-chevron-right"></i> Experience</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-contact">
+                
+                <div class="footer-section">
                     <h3>Contact</h3>
-                    <ul>
+                    <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> Sopharachan90@gmail.com</li>
                         <li><i class="fas fa-phone"></i> 097-351-3505</li>
                         <li><i class="fas fa-map-marker-alt"></i> Phnom Penh, Cambodia</li>
                     </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Chan Sophara. All rights reserved.</p>
+                <p>&copy; 2026, Chan Sophara. All rights reserved.</p>
             </div>
         </div>
     </footer>
