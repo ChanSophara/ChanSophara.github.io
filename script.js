@@ -422,7 +422,7 @@ function initAnimatedText() {
     let isDeleting = false;
     let isPaused = false;
     let typingSpeed = 120; // ms per character
-    let deletingSpeed = 50; // ms per character when deleting
+    let deletingSpeed = 100; // ms per character when deleting
     let pauseTime = 2000; // ms to pause between words
     
     function typeWriter() {
