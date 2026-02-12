@@ -421,7 +421,7 @@ function initAnimatedText() {
     let currentCharIndex = 0;
     let isDeleting = false;
     let isPaused = false;
-    let typingSpeed = 120; // ms per character
+    let typingSpeed = 100; // ms per character
     let deletingSpeed = 100; // ms per character when deleting
     let pauseTime = 2000; // ms to pause between words
     
